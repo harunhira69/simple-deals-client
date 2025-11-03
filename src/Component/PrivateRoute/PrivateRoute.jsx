@@ -4,16 +4,20 @@ import { AuthContext } from '../../Context/AuthContext';
 
 
 const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const location = useLocation();
 
-  // If user not logged in, redirect to register (or login)
-  if (!user) {
-    return <Navigate to="/register" state={{ from: location }} replace />;
+  if(loading){
+    return <span className='loading loading-spinner text-success'></span>
   }
 
-  // If logged in, show the protected content
+  // If user not logged in, redirect to register (or login)
+if(user){
   return children;
+}
+
+return <Navigate state={{ from: location?.pathname }} to='/register' replace />
+
 };
 
 export default PrivateRoute;

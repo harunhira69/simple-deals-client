@@ -35,6 +35,23 @@ const removeUser=()=>{
 useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
         setUser(currentUser)
+        console.log(currentUser)
+        if(currentUser){
+            const loggedUser = {email:currentUser.email}
+            fetch('http://localhost:3000/getToken',{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(loggedUser)
+
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log('after getting token',data)
+               localStorage.setItem('access-token', data.token);
+            })
+        }
         setLoading(false)
 
     })

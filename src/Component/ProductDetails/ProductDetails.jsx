@@ -13,7 +13,11 @@ const ProductDetails = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/product/bids/${productId}`)
+    fetch(`http://localhost:3000/product/bids/${productId}`,{
+      headers:{
+        authorization:`Bearer ${user.accessToken}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
         // Ensure we always set an array
@@ -22,7 +26,7 @@ const ProductDetails = () => {
         console.log('Bids for this product:', data);
       })
       .catch(err => console.error('Error loading bids:', err));
-  }, [productId]);
+  }, [productId,user]);
 
 
 
