@@ -23,6 +23,9 @@ const signOut = () => {
           user&& <>
            <li><NavLink to='/my-products'>My Products</NavLink></li>
          <li><NavLink to='/my-bids'>My Bids</NavLink></li>
+         <li>
+          <NavLink to='/createAProduct'>Create A Product</NavLink>
+         </li>
           
           </>
          }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ProductDetails = () => {
   const { _id: productId } = useLoaderData();
@@ -10,6 +11,14 @@ const ProductDetails = () => {
 
   const bidModalRef = useRef(null)
 
+
+
+//   useEffect(() => {
+// axios.get(`http://localhost:3000/product/bids/${productId}`)
+// .then(data=>{
+//   console.log('after axios',data)
+// })
+//   }, [productId]);
 
 
   useEffect(() => {
